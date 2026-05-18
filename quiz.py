@@ -476,4 +476,4 @@ if __name__ == "__main__":
     Thread(target=run_web).start()
 
     # Telegram bot polling
-    bot.infinity_polling(timeout=10, long_polling_timeout=5)
+    bot.infinity_polling(skip_pending=True)
