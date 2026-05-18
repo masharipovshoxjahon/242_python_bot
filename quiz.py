@@ -37,7 +37,7 @@ except ImportError:
 
 # ─── Sozlamalar ────────────────────────────────────────────────────────────────
 
-TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8958925484:AAEyfBnB2PpMK-Vp2DuYPcHlzAbTVE7QPtQ")
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8958925484:AAEGSBWW5aRL9g2VASV0CTA53p4HJWbINAs")
 ADMIN_ID = os.environ.get("ADMIN_ID", "6847269931")
 
 if not TOKEN:
