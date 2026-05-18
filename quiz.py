@@ -26,6 +26,8 @@ import random
 import telebot
 from telebot import types
 from openpyxl import load_workbook
+from flask import Flask
+from threading import Thread
 
 try:
     from dotenv import load_dotenv
@@ -43,6 +45,15 @@ if not TOKEN:
     exit(1)
 
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Quiz Bot ishlayapti!"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
 
 # ─── Ma'lumotlar ───────────────────────────────────────────────────────────────
 
@@ -460,4 +471,9 @@ if __name__ == "__main__":
     print("Quiz Bot ishga tushdi!")
     print(f"Admin ID: {ADMIN_ID or 'belgilanmagan'}")
     print("To'xtatish uchun Ctrl+C bosing.")
+
+    # Flask serverni alohida threadda ishga tushirish
+    Thread(target=run_web).start()
+
+    # Telegram bot polling
     bot.infinity_polling(timeout=10, long_polling_timeout=5)
